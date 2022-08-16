@@ -7,6 +7,8 @@ import org.springframework.data.repository.CrudRepository;
 
 /**
  * The {@link ICrudService} implementation.
+ *
+ * @author Alben Bustamante
  */
 public abstract class CrudService<T> implements ICrudService<T> {
 

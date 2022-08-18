@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "results")
+@Table(name = "roles")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

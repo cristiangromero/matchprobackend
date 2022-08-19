@@ -2,40 +2,32 @@ package com.example.matchpro.service;
 
 import com.example.matchpro.model.Match;
 import com.example.matchpro.repository.MatchRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
-public class MatchService implements IMatchService{
+@RequiredArgsConstructor
+public class MatchService extends CrudService<Match> implements IMatchService{
 
-    @Autowired
-    public MatchRepository matchRepo;
+    private final MatchRepository repository;
 
     @Override
-    public List<Match> listMatch() {
-        return matchRepo.findAll();
+    protected CrudRepository<Match, Long> repository() {
+        return repository;
     }
 
     @Override
-    public void newMatch(Match match) {
-        matchRepo.save(match);
-    }
+    public Optional<Match> update(long id, Match match) {
+        if (!repository.existsById(id)) {
+            return Optional.empty();
+        }
 
-    @Override
-    public void deleteMatch(Match match) {
-        matchRepo.delete(match);
-    }
+        match.setMatchId(id);
 
-    @Override
-    public Match findMatch(Long id) {
-        return matchRepo.findById(id).orElse(null);
-    }
-
-    @Override
-    public void editMatch(Match match) {
-        matchRepo.save(match);
+        return Optional.of(repository.save(match));
     }
 
 }

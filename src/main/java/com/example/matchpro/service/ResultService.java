@@ -2,40 +2,32 @@ package com.example.matchpro.service;
 
 import com.example.matchpro.model.Result;
 import com.example.matchpro.repository.ResultRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
-public class ResultService implements IResultService {
+@RequiredArgsConstructor
+public class ResultService extends CrudService<Result> implements IResultService{
 
-    @Autowired
-    public ResultRepository resultRepo;
+    private final ResultRepository repository;
 
     @Override
-    public List<Result> listResult() {
-        return resultRepo.findAll();
+    protected CrudRepository<Result, Long> repository() {
+        return repository;
     }
 
     @Override
-    public void newResult(Result result) {
-        resultRepo.save(result);
-    }
+    public Optional<Result> update(long id, Result result) {
+        if (!repository.existsById(id)) {
+            return Optional.empty();
+        }
 
-    @Override
-    public void deleteResult(Result result) {
-        resultRepo.delete(result);
-    }
+        result.setResultId(id);
 
-    @Override
-    public Result findResult(Long id) {
-        return resultRepo.findById(id).orElse(null);
-    }
-
-    @Override
-    public void editResult(Result result) {
-        resultRepo.save(result);
+        return Optional.of(repository.save(result));
     }
 
 }

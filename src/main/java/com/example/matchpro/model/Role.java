@@ -16,7 +16,7 @@ import java.util.List;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long rolId;
+    private Long roleId;
     @Column(nullable = false, length = 150)
     private String name;
     @OneToMany(mappedBy = "roles",cascade = CascadeType.ALL)

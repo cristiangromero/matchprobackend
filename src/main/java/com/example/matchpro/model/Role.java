@@ -9,14 +9,14 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "results")
+@Table(name = "roles")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long rolId;
+    private Long roleId;
     @Column(nullable = false, length = 150)
     private String name;
     @OneToMany(mappedBy = "roles",cascade = CascadeType.ALL)

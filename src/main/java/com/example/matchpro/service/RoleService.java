@@ -2,40 +2,32 @@ package com.example.matchpro.service;
 
 import com.example.matchpro.model.Role;
 import com.example.matchpro.repository.RoleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
-public class RoleService implements IRoleService {
+@RequiredArgsConstructor
+public class RoleService extends CrudService<Role> implements IRoleService{
 
-    @Autowired
-    public RoleRepository roleRepo;
+    private final RoleRepository repository;
 
     @Override
-    public List<Role> listRole() {
-        return roleRepo.findAll();
+    protected CrudRepository<Role, Long> repository() {
+        return repository;
     }
 
     @Override
-    public void newRole(Role role) {
-        roleRepo.save(role);
-    }
+    public Optional<Role> update(long id, Role role) {
+        if (!repository.existsById(id)) {
+            return Optional.empty();
+        }
 
-    @Override
-    public void deleteRole(Role role) {
-        roleRepo.delete(role);
-    }
+        role.setRoleId(id);
 
-    @Override
-    public Role findRole(Long id) {
-        return roleRepo.findById(id).orElse(null);
-    }
-
-    @Override
-    public void editRole(Role role) {
-        roleRepo.save(role);
+        return Optional.of(repository.save(role));
     }
 
 }

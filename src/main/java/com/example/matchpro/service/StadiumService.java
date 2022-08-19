@@ -2,40 +2,32 @@ package com.example.matchpro.service;
 
 import com.example.matchpro.model.Stadium;
 import com.example.matchpro.repository.StadiumRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
-public class StadiumService implements IStadiumService {
+@RequiredArgsConstructor
+public class StadiumService extends CrudService<Stadium> implements IStadiumService{
 
-    @Autowired
-    public StadiumRepository stadiumRepo;
+    private final StadiumRepository repository;
 
     @Override
-    public List<Stadium> listStadium() {
-        return stadiumRepo.findAll();
+    protected CrudRepository<Stadium, Long> repository() {
+        return repository;
     }
 
     @Override
-    public void newStadium(Stadium stadium) {
-        stadiumRepo.save(stadium);
-    }
+    public Optional<Stadium> update(long id, Stadium stadium) {
+        if (!repository.existsById(id)) {
+            return Optional.empty();
+        }
 
-    @Override
-    public void deleteStadium(Stadium stadium) {
-        stadiumRepo.delete(stadium);
-    }
+        stadium.setStadiumId(id);
 
-    @Override
-    public Stadium findStadium(Long id) {
-        return stadiumRepo.findById(id).orElse(null);
-    }
-
-    @Override
-    public void editStadium(Stadium stadium) {
-        stadiumRepo.save(stadium);
+        return Optional.of(repository.save(stadium));
     }
 
 }

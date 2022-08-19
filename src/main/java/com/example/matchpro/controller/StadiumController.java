@@ -2,54 +2,21 @@ package com.example.matchpro.controller;
 
 
 import com.example.matchpro.model.Stadium;
+import com.example.matchpro.service.ICrudService;
 import com.example.matchpro.service.IStadiumService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/api/stadium")
+@RequestMapping("/stadium")
 @CrossOrigin
-public class StadiumController {
-    @Autowired
-    private IStadiumService stadiumServ;
+@RequiredArgsConstructor
+public class StadiumController extends CrudController<Stadium>{
 
-    //    @PreAuthorize("isAuthenticated()")
-    @PostMapping
-    public void addStadium (@RequestBody Stadium stadium){
-        stadiumServ.newStadium(stadium);
-    }
+    private final IStadiumService service;
 
-    @GetMapping
-    @ResponseBody
-    public List<Stadium> listStadium(){
-        return stadiumServ.listStadium();
-    }
-
-    @GetMapping("/{id}")
-    @ResponseBody
-    public Stadium findStadium(@PathVariable Long id){
-        return stadiumServ.findStadium(id);
-    }
-
-    //    @PreAuthorize("isAuthenticated()")
-    @DeleteMapping("/{id}")
-    public void deleteStadium (@PathVariable Long id){
-        Stadium stadium= findStadium(id);
-        stadiumServ.deleteStadium(stadium);
-    }
-
-    //    @PreAuthorize("isAuthenticated()")
-    @PutMapping
-    public void editStadium (@RequestBody Stadium stadium){
-        stadiumServ.editStadium(stadium);
-    }
-
-    //    @PreAuthorize("isAuthenticated()")
-    @PutMapping("/{id}")
-    public void editStadium(@PathVariable Long id) {
-        Stadium stadium= findStadium(id);
-        stadiumServ.editStadium(stadium);
+    @Override
+    protected ICrudService<Stadium> service() {
+        return service;
     }
 }

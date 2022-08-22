@@ -25,7 +25,7 @@ public class Match {
     @JoinColumn (name = "stageId", nullable = false, updatable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Stage stages;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn (name = "resultId", nullable = true, updatable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Result results;

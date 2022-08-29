@@ -15,7 +15,7 @@ import java.util.List;
 public class Team {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long teamId;
     @Column(nullable = false, length = 150)
     private String name;
@@ -24,6 +24,12 @@ public class Team {
     private List<Match> localMatches;
     @OneToMany(mappedBy = "visitors",cascade = CascadeType.ALL)
     private List<Match> visitorMatches;
+
+    public Team(Long teamId, String name, String flag) {
+        this.teamId = teamId;
+        this.name = name;
+        this.flag = flag;
+    }
 
     public void setMatches(List<Match> matches) {
         this.localMatches = matches;

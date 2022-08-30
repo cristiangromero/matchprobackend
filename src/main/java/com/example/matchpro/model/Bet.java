@@ -16,7 +16,9 @@ public class Bet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long betId;
+    @Column(nullable = false)
     private java.sql.Date betDate;
+    @Column(nullable = true)
     private int userPoints;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn (name = "resultId", nullable = true, updatable = false)

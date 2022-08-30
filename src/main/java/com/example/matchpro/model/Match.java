@@ -17,6 +17,7 @@ public class Match {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long matchId;
     private java.sql.Date matchDate;
+    private String status;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn (name = "stadiumId", nullable = false, updatable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

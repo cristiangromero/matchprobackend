@@ -30,4 +30,8 @@ public class StadiumService extends CrudService<Stadium> implements IStadiumServ
         return Optional.of(repository.save(stadium));
     }
 
+    @Override
+    public Optional<Stadium> getByName(String name) {
+        return repository.findByName(name);
+    }
 }

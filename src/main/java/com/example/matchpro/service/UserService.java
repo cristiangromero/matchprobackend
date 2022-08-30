@@ -5,6 +5,7 @@ import com.example.matchpro.repository.IUserRepository;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,10 +18,18 @@ import org.springframework.stereotype.Service;
 public class UserService extends CrudService<User> implements IUserService {
 
     private final IUserRepository repository;
+    private final PasswordEncoder encoder;
 
     @Override
     protected CrudRepository<User, Long> repository() {
         return repository;
+    }
+
+    @Override
+    public User create(User user) {
+        user.setPassword(encoder.encode(user.getPassword()));
+
+        return repository.save(user);
     }
 
     @Override
@@ -30,6 +39,7 @@ public class UserService extends CrudService<User> implements IUserService {
         }
 
         user.setUserId(id);
+        user.setPassword(encoder.encode(user.getPassword()));
 
         return Optional.of(repository.save(user));
     }

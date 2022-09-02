@@ -8,5 +8,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class TeamRequest {
+    private long id;
     private String name, flag;
 }

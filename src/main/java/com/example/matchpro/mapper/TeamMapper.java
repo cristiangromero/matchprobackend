@@ -14,8 +14,8 @@ public interface TeamMapper extends BaseMapper<Team, TeamResponse> {
 
     @Mapping(target = "matches", ignore = true)
     @Mapping(target = "visitorMatches", ignore = true)
-    @Mapping(target = "teamId", ignore = true)
     @Mapping(target = "localMatches", ignore = true)
+    @Mapping(target = "teamId", source = "id")
     Team toEntity(TeamRequest request);
 
     @Mapping(target = "teamId", source = "id")

@@ -1,7 +1,9 @@
 package com.example.matchpro.controller;
 
+import com.example.matchpro.dto.team.TeamRequest;
+import com.example.matchpro.dto.team.TeamResponse;
 import com.example.matchpro.model.Team;
-import com.example.matchpro.service.ICrudService;
+import com.example.matchpro.service.IGenericService;
 import com.example.matchpro.service.ITeamService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,18 +20,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/teams")
 @RequiredArgsConstructor
-public class TeamController extends CrudController<Team> {
+public class TeamController extends GenericController<TeamRequest, TeamResponse> {
 
     private final ITeamService service;
 
-    @Override
-    protected ICrudService<Team> service() {
-        return service;
+    @GetMapping("/name/{name}")
+    public ResponseEntity<TeamResponse> getByName(@PathVariable("name") String name) {
+        return ResponseEntity.of(service.getByName(name));
     }
 
-    @GetMapping("/name/{name}")
-    public ResponseEntity<Team> getByName(@PathVariable("name") String name) {
-        return ResponseEntity.of(service.getByName(name));
+    @Override
+    protected IGenericService<TeamRequest, TeamResponse> service() {
+        return service;
     }
 
 }

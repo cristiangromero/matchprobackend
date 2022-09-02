@@ -33,13 +33,13 @@ public class SecurityConfig {
     }
 
     /**
-     * @param authConfig the {@link AuthenticationConfiguration}
+     * @param auth the {@link AuthenticationConfiguration}
      * @return the {@link AuthenticationManager} from the configuration.
      * @throws Exception if an error occurs.
      */
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
-        return authConfig.getAuthenticationManager();
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration auth) throws Exception {
+        return auth.getAuthenticationManager();
     }
 
     /**

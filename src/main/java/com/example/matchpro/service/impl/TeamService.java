@@ -1,10 +1,11 @@
-package com.example.matchpro.service;
+package com.example.matchpro.service.impl;
 
 import com.example.matchpro.dto.team.TeamRequest;
 import com.example.matchpro.dto.team.TeamResponse;
 import com.example.matchpro.mapper.TeamMapper;
 import com.example.matchpro.model.Team;
 import com.example.matchpro.repository.ITeamRepository;
+import com.example.matchpro.service.ITeamService;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,9 @@
-package com.example.matchpro.service;
+package com.example.matchpro.service.impl;
 
 import com.example.matchpro.model.Stage;
 import com.example.matchpro.repository.IStageRepository;
+import com.example.matchpro.service.CrudService;
+import com.example.matchpro.service.IStageService;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.CrudRepository;

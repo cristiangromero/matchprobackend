@@ -1,10 +1,11 @@
-package com.example.matchpro.service;
+package com.example.matchpro.service.impl;
 
 import com.example.matchpro.dto.match.MatchRequest;
 import com.example.matchpro.dto.match.MatchResponse;
 import com.example.matchpro.mapper.MatchMapper;
 import com.example.matchpro.model.Match;
 import com.example.matchpro.repository.MatchRepository;
+import com.example.matchpro.service.IMatchService;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class MatchService implements IMatchService{
+public class MatchService implements IMatchService {
 
     private final MatchRepository repository;
     private final MatchMapper mapper;

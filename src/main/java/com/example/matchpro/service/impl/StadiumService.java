@@ -1,10 +1,11 @@
-package com.example.matchpro.service;
+package com.example.matchpro.service.impl;
 
 import com.example.matchpro.dto.stadium.StadiumRequest;
 import com.example.matchpro.dto.stadium.StadiumResponse;
 import com.example.matchpro.mapper.StadiumMapper;
 import com.example.matchpro.model.Stadium;
 import com.example.matchpro.repository.StadiumRepository;
+import com.example.matchpro.service.IStadiumService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.CrudRepository;
@@ -14,7 +15,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class StadiumService implements IStadiumService{
+public class StadiumService implements IStadiumService {
 
     private final StadiumRepository repository;
     private final StadiumMapper mapper;

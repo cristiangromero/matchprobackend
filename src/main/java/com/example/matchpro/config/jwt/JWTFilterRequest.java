@@ -1,6 +1,6 @@
 package com.example.matchpro.config.jwt;
 
-import com.example.matchpro.service.CustomUserDetailsService;
+import com.example.matchpro.service.impl.CustomUserDetailsService;
 import java.io.IOException;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;

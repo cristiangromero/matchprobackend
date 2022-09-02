@@ -1,7 +1,9 @@
-package com.example.matchpro.service;
+package com.example.matchpro.service.impl;
 
 import com.example.matchpro.model.Role;
 import com.example.matchpro.repository.RoleRepository;
+import com.example.matchpro.service.CrudService;
+import com.example.matchpro.service.IRoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -10,7 +12,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class RoleService extends CrudService<Role> implements IRoleService{
+public class RoleService extends CrudService<Role> implements IRoleService {
 
     private final RoleRepository repository;
 

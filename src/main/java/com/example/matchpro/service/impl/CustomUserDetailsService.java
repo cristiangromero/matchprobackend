@@ -1,4 +1,4 @@
-package com.example.matchpro.service;
+package com.example.matchpro.service.impl;
 
 import com.example.matchpro.model.Role;
 import com.example.matchpro.repository.IUserRepository;

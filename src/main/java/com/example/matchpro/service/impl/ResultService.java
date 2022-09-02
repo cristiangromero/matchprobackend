@@ -1,7 +1,9 @@
-package com.example.matchpro.service;
+package com.example.matchpro.service.impl;
 
 import com.example.matchpro.model.Result;
 import com.example.matchpro.repository.ResultRepository;
+import com.example.matchpro.service.CrudService;
+import com.example.matchpro.service.IResultService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -10,7 +12,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ResultService extends CrudService<Result> implements IResultService{
+public class ResultService extends CrudService<Result> implements IResultService {
 
     private final ResultRepository repository;
 

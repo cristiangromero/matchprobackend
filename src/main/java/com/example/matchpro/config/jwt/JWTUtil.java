@@ -1,10 +1,9 @@
-package com.example.matchpro.config.security.jwt;
+package com.example.matchpro.config.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import java.util.Date;
-import javax.crypto.spec.SecretKeySpec;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 

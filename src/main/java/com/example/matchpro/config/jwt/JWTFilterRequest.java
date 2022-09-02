@@ -1,4 +1,4 @@
-package com.example.matchpro.config.security.jwt;
+package com.example.matchpro.config.jwt;
 
 import com.example.matchpro.service.CustomUserDetailsService;
 import java.io.IOException;

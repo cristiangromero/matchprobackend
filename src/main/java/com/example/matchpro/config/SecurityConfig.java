@@ -1,6 +1,6 @@
-package com.example.matchpro.config.security;
+package com.example.matchpro.config;
 
-import com.example.matchpro.config.security.jwt.JWTFilterRequest;
+import com.example.matchpro.config.jwt.JWTFilterRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

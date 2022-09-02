@@ -1,5 +1,7 @@
 package com.example.matchpro.service;
 
+import com.example.matchpro.dto.team.TeamRequest;
+import com.example.matchpro.dto.team.TeamResponse;
 import com.example.matchpro.model.Team;
 import java.util.Optional;
 
@@ -8,7 +10,7 @@ import java.util.Optional;
  *
  * @author Alben Bustamante
  */
-public interface ITeamService extends ICrudService<Team> {
+public interface ITeamService extends IGenericService<TeamRequest, TeamResponse> {
 
     /**
      * Get a {@link Team} by the name.
@@ -16,6 +18,6 @@ public interface ITeamService extends ICrudService<Team> {
      * @param name the name to search.
      * @return an optional of the team found.
      */
-    Optional<Team> getByName(String name);
+    Optional<TeamResponse> getByName(String name);
 
 }

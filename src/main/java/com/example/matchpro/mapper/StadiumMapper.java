@@ -16,4 +16,9 @@ public interface StadiumMapper extends BaseMapper<Stadium, StadiumResponse> {
     @Mapping(target = "matches", ignore = true)
     Stadium toEntity(StadiumRequest request);
 
+    @Mapping(target = "stadiumId", source = "id")
+    @Mapping(target = "name", ignore = true)
+    @Mapping(target = "matches", ignore = true)
+    Stadium map(Long id);
+
 }

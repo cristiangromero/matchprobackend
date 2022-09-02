@@ -17,4 +17,10 @@ public interface ResultMapper extends BaseMapper<Result, ResultResponse> {
     @Mapping(target = "bets", ignore = true)
     Result toEntity(ResultRequest request);
 
+    @Mapping(target = "name", ignore = true)
+    @Mapping(target = "matches", ignore = true)
+    @Mapping(target = "bets", ignore = true)
+    @Mapping(target = "resultId", source = "id")
+    Result map(Long id);
+
 }

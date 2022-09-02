@@ -16,4 +16,9 @@ public interface StageMapper extends BaseMapper<Stage, StageResponse> {
     @Mapping(target = "matches", ignore = true)
     Stage toEntity(StageRequest request);
 
+    @Mapping(target = "stageId", source = "id")
+    @Mapping(target = "name", ignore = true)
+    @Mapping(target = "matches", ignore = true)
+    Stage map(Long id);
+
 }

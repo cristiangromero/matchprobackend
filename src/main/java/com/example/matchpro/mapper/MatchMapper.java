@@ -17,12 +17,12 @@ public interface MatchMapper extends BaseMapper<Match, MatchResponse> {
     @Mapping(target = "date", source = "matchDate", dateFormat = "dd-MM-yyyy")
     MatchResponse toResponse(Match entity);
 
-    @Mapping(target = "visitors", source = "visitorTeam")
-    @Mapping(target = "stages", source = "stage")
-    @Mapping(target = "stadiums", source = "stadium")
-    @Mapping(target = "results", source = "result")
     @Mapping(target = "matchId", ignore = true)
-    @Mapping(target = "locals", source = "localTeam")
+    @Mapping(target = "visitors", source = "visitorTeamId")
+    @Mapping(target = "stages", source = "stageId")
+    @Mapping(target = "stadiums", source = "stadiumId")
+    @Mapping(target = "results", source = "resultId")
+    @Mapping(target = "locals", source = "localTeamId")
     Match toEntity(MatchRequest request);
 
 }

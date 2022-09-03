@@ -12,7 +12,6 @@ public interface TeamMapper extends BaseMapper<Team, TeamResponse> {
     @Mapping(target = "id", source = "teamId")
     TeamResponse toResponse(Team entity);
 
-    @Mapping(target = "matches", ignore = true)
     @Mapping(target = "visitorMatches", ignore = true)
     @Mapping(target = "localMatches", ignore = true)
     @Mapping(target = "teamId", source = "id")
@@ -21,7 +20,6 @@ public interface TeamMapper extends BaseMapper<Team, TeamResponse> {
     @Mapping(target = "teamId", source = "id")
     @Mapping(target = "visitorMatches", ignore = true)
     @Mapping(target = "name", ignore = true)
-    @Mapping(target = "matches", ignore = true)
     @Mapping(target = "localMatches", ignore = true)
     @Mapping(target = "flag", ignore = true)
     Team map(Long id);

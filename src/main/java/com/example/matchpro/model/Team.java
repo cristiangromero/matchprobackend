@@ -31,14 +31,17 @@ public class Team {
         this.flag = flag;
     }
 
-    public void setMatches(List<Match> matches) {
+    public void setLocalMatches(List<Match> matches) {
         this.localMatches = matches;
         for(Match m : matches) {
             m.setLocals(this);
         }
+    }
+    public void setVisitorMatches(List<Match> matches){
         this.visitorMatches = matches;
         for(Match m : matches) {
             m.setVisitors(this);
         }
     }
+
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -17,7 +18,7 @@ public class Bet {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long betId;
     @Column(nullable = false)
-    private java.sql.Date betDate;
+    private Date betDate;
     @Column(nullable = true)
     private int userPoints;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

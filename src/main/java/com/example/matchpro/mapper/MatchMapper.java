@@ -6,11 +6,10 @@ import com.example.matchpro.model.Match;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring", uses = {StadiumMapper.class, ResultMapper.class, StageMapper.class, TeamMapper.class})
+@Mapper(componentModel = "spring", uses = {ResultMapper.class, StageMapper.class, TeamMapper.class})
 public interface MatchMapper extends BaseMapper<Match, MatchResponse> {
 
     @Mapping(target = "visitorTeam", source = "visitors.name")
-    @Mapping(target = "stadium", source = "stadiums.name")
     @Mapping(target = "result", source = "results.name")
     @Mapping(target = "localTeam", source = "locals.name")
     @Mapping(target = "id", source = "matchId")
@@ -20,7 +19,6 @@ public interface MatchMapper extends BaseMapper<Match, MatchResponse> {
     @Mapping(target = "matchId", ignore = true)
     @Mapping(target = "visitors", source = "visitorTeamId")
     @Mapping(target = "stages", source = "stageId")
-    @Mapping(target = "stadiums", source = "stadiumId")
     @Mapping(target = "results", source = "resultId")
     @Mapping(target = "locals", source = "localTeamId")
     Match toEntity(MatchRequest request);

@@ -10,6 +10,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class MatchRequest {
     private Date matchDate;
-    private String status;
-    private long stadiumId, stageId, resultId, visitorTeamId, localTeamId;
+    private String status, stadium;
+    private long stageId, resultId, visitorTeamId, localTeamId;
 }

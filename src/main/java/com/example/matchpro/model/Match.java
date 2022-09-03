@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,28 +16,31 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Match {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+   // @GeneratedValue(strategy = GenerationType.AUTO)
     private Long matchId;
-    private java.sql.Date matchDate;
+    private Date matchDate;
     private String status;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn (name = "stadiumId", nullable = false, updatable = false)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Stadium stadiums;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn (name = "stageId", nullable = false, updatable = false)
+    private String stadium;
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn (name = "stageId", nullable = true, updatable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Stage stages;
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn (name = "resultId", nullable = true, updatable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Result results;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn (name = "localTeam", nullable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn (name = "localTeam", nullable = true, updatable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Team locals;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn (name = "visitorTeam", nullable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn (name = "visitorTeam", nullable = true, updatable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Team visitors;
+
+    public Match(Long matchId, Date matchDate, String status) {
+        this.matchId = matchId;
+        this.matchDate = matchDate;
+        this.status = status;
+    }
 }

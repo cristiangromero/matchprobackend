@@ -19,7 +19,7 @@ public class User {
     private Long userId;
     @Column(nullable = false, length = 150)
     private String name;
-    @Column(nullable = false, length = 150)
+    @Column(nullable = false, length = 150, unique = true)
     private String email;
     @Column(nullable = false)
     private String password;

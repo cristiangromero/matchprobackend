@@ -1,6 +1,9 @@
 package com.example.matchpro.controller;
 
 import com.example.matchpro.service.ICrudService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +34,8 @@ public abstract class CrudController<T> {
      * @param t the element to be registered.
      * @return a {@link ResponseEntity} with the element registered.
      */
+    @ApiResponse(code = 201, message = "Elemento registrado exitosamente")
+    @ApiOperation(value = "Registra un nuevo elemento")
     @PostMapping
     public ResponseEntity<T> register(@RequestBody T t) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service().create(t));
@@ -39,6 +44,8 @@ public abstract class CrudController<T> {
     /**
      * @return a {@link ResponseEntity} with all the elements registered.
      */
+    @ApiResponse(code = 200, message = "OK")
+    @ApiOperation(value = "Obtén una lista con todos los elementos registrados")
     @GetMapping
     public ResponseEntity<List<T>> getAll() {
         return ResponseEntity.ok(service().getAll());
@@ -50,6 +57,11 @@ public abstract class CrudController<T> {
      * @param id the id to search.
      * @return a {@link ResponseEntity} with the element found (CODE 200) or empty (CODE 404).
      */
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 404, message = "Elemento no encontrado")
+    })
+    @ApiOperation(value = "Obtén un elemento existente por su ID")
     @GetMapping("/{id}")
     public ResponseEntity<T> get(@PathVariable("id") long id) {
         return ResponseEntity.of(service().get(id));
@@ -62,6 +74,11 @@ public abstract class CrudController<T> {
      * @param t the body to use on the existing element.
      * @return a {@link ResponseEntity} with the element updated (CODE 200) or empty if not exists (CODE 404).
      */
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "Elemento actualizado exitosamente"),
+            @ApiResponse(code = 404, message = "Elemento no encontrado")
+    })
+    @ApiOperation(value = "Actualiza un elemento existente por su ID")
     @PutMapping("/{id}")
     public ResponseEntity<T> update(@PathVariable("id") long id, @RequestBody T t) {
         return ResponseEntity.of(service().update(id, t));
@@ -73,6 +90,11 @@ public abstract class CrudController<T> {
      * @param id the id to search and be removed.
      * @return a {@link ResponseEntity} with code 200 if it was removed successfully or 404 if not.
      */
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "Elemento eliminado exitosamente"),
+            @ApiResponse(code = 404, message = "Elemento no encontrado")
+    })
+    @ApiOperation(value = "Elimina un elemento existente por su ID")
     @DeleteMapping("/{id}")
     public ResponseEntity<T> delete(@PathVariable("id") long id) {
         return service().delete(id) ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();

@@ -33,4 +33,9 @@ public class TeamService extends CrudService<Team> implements ITeamService {
 
         return Optional.of(repository.save(team));
     }
+
+    @Override
+    public Optional<Team> getByName(String name) {
+        return repository.findByName(name);
+    }
 }

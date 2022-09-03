@@ -33,4 +33,10 @@ public class StageService extends CrudService<Stage> implements IStageService {
 
         return Optional.of(repository.save(stage));
     }
+
+    @Override
+    public Optional<Stage> getByName(String name) {
+        return repository.findByName(name);
+    }
+
 }

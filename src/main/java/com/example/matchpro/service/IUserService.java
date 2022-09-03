@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface IUserService extends ICrudService<User> {
 
     /**
-     * Get a user by the email.
+     * Get an user by the email.
      *
      * @param email the email to search.
      * @return an optional of the user found.

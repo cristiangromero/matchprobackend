@@ -19,13 +19,13 @@ public class User {
     private Long userId;
     @Column(nullable = false, length = 150)
     private String name;
-    @Column(nullable = false, length = 150)
+    @Column(nullable = false, length = 150, unique = true)
     private String email;
     @Column(nullable = false)
     private String password;
     @Column(nullable = true)
     private int score;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn (name = "roleId", nullable = true, updatable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Role roles;
